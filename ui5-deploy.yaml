@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: br.com.dlacademy.zuiflight
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: abap-cloud-cris_abap-2e5cb07ctrial-dev
+          url: https://23bf02f0-9d4d-4fe7-ae57-cab54ffafb1e.abap.us10.hana.ondemand.com
+          scp: true
+        app:
+          name: ZZ1DLRAPFLIGHT
+          description: Voo
+          package: ZDLRAP_FLIGHT_CRIS
+          transport: TRLK903253
+        exclude:
+          - /test/
